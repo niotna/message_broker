@@ -1,0 +1,26 @@
+rabbitmq_data/
+
+
+###> symfony/framework-bundle ###
+symfony/.env.local
+symfony/.env.local.php
+symfony/.env.*.local
+symfony/config/secrets/prod/prod.decrypt.private.php
+symfony/public/bundles/
+symfony/var/
+symfony/vendor/
+###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+symfony/phpunit.xml
+symfony/.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+symfony/.phpunit.result.cache
+symfony/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+symfony/docker/
+symfony/bin/
+symfony/.idea/
