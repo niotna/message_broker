@@ -89,7 +89,7 @@ rabbitmq: http://localhost:15672
 ## run docker:
 
 ```bash
-cd symfony
+cd symfony2
 docker compose up --build -d
 ```
 
@@ -98,7 +98,7 @@ docker exec -it broker_php_ex php bin/console messenger:consume
 ```
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"task": "coucou"}' http://localhost:8080/tasks 
+curl -X POST -H "Content-Type: application/json" -d '{"ownerName": "antoine chabreuil", "productName": "quick realase"}' http://localhost:8080/order
 ```
 
 ## web accès:

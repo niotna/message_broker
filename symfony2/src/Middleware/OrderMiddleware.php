@@ -6,9 +6,9 @@ use App\Message\HighPriorityTaskMessage;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Middleware\MiddlewareInterface;
 use Symfony\Component\Messenger\Middleware\StackInterface;
-use App\Message\TaskMessage;
+use App\Message\OrderMessage;
 
-class TaskMiddleware implements MiddlewareInterface
+class OrderMiddleware implements MiddlewareInterface
 {
     public function handle(Envelope $envelope, StackInterface $stack): Envelope
     {
@@ -16,7 +16,7 @@ class TaskMiddleware implements MiddlewareInterface
         $message = $envelope->getMessage();
 
         // Add a created_at property to the message
-        if ($message instanceof TaskMessage || $message instanceof HighPriorityTaskMessage) {
+        if ($message instanceof OrderMessage) {
             $message->setCreatedAt(new \DateTime());
         }
 

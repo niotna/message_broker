@@ -23,6 +23,10 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\MessageHandler\TaskMessageHandler:
+    App\MessageHandler\OrderMessageHandler:
+        tags:
+            - messenger.message_handler
+
+    App\MessageHandler\OrderProcessedMessageHandler:
         tags:
             - messenger.message_handler
