@@ -3,7 +3,8 @@
 ## run docker:
 
 ```bash
-dc -f docker-compose-py.yml up -d
+cd python
+dc up --build -d
 ```
 
 ## Envoi / recevoir de messages:
@@ -59,7 +60,7 @@ docker compose exec rabbitmq hostname -I
 ```
 
 ```bash
-python ./python/send_receive.py
+python send_receive.py
 ```
 
 # TP 2
