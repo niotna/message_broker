@@ -1,0 +1,32 @@
+FROM php:8.1-fpm
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install symfony dependencies
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    zip \
+    lsb-release \
+    gnupg \
+    librabbitmq-dev \
+    && docker-php-ext-install zip \
+    && apt-get clean
+
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
+    install-php-extensions amqp
+
+# Workdir
+WORKDIR /var/www/html
+
+COPY . /var/www/html/
+
+
+# Run comoser install
+RUN composer install
+
+# Set working directory
+WORKDIR /var/www/html
+

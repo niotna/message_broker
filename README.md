@@ -82,3 +82,24 @@ curl -X POST -H "Content-Type: application/json" -d '{"task": "Faire les courses
 ## web accès:
 
 rabbitmq: http://localhost:15672
+
+# exam
+
+## run docker:
+
+```bash
+cd symfony
+docker compose up --build -d
+```
+
+```bash
+docker exec -it broker_php_ex php bin/console messenger:consume 
+```
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"task": "coucou"}' http://localhost:8080/tasks 
+```
+
+## web accès:
+
+rabbitmq: http://localhost:15672

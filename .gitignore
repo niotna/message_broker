@@ -1,5 +1,6 @@
 rabbitmq_data/
 
+###> --------------------------------------------> tp2 <-------------------------------------------------------
 
 ###> symfony/framework-bundle ###
 symfony/.env.local
@@ -24,3 +25,29 @@ symfony/phpunit.xml
 symfony/docker/
 symfony/bin/
 symfony/.idea/
+
+###> --------------------------------------------> tp3 <-------------------------------------------------------
+
+###> symfony/framework-bundle ###
+symfony2/.env.local
+symfony2/.env.local.php
+symfony2/.env.*.local
+symfony2/config/secrets/prod/prod.decrypt.private.php
+symfony2/public/bundles/
+symfony2/var/
+symfony2/vendor/
+###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+symfony2/phpunit.xml
+symfony2/.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+symfony2/.phpunit.result.cache
+symfony2/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+symfony2/docker/
+symfony2/bin/
+symfony2/.idea/
