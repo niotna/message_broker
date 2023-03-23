@@ -68,7 +68,7 @@ python ./python/send_receive.py
 
 ```bash
 cd symfony
-dc up --build -d
+docker compose up --build -d
 ```
 
 ```bash
