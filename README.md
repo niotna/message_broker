@@ -1,3 +1,9 @@
+# Prérequis:
+
+- Docker version 23.0.1, build a5ee5b1
+- Docker Compose version v2.16.0
+
+
 # TP 1
 
 ## run docker:
