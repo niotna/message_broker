@@ -1,21 +1,38 @@
-version: '3'
+version: '3.9'
 
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-15}-alpine
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-blablabla}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
     volumes:
-      - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      - ./rabbitmq_data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
 
-volumes:
-###> doctrine/doctrine-bundle ###
-  database_data:
-###< doctrine/doctrine-bundle ###
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile-php
+    container_name: broker_php
+    volumes:
+      - .:/var/www/html
+    environment:
+      - MESSENGER_TRANSPORT_DSN=amqp://guest:guest@rabbitmq:5672/%2f
+    depends_on:
+      - rabbitmq
+
+  web:
+    image: nginx:alpine
+    container_name: web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www/html
+    depends_on:
+      - php

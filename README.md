@@ -1,6 +1,6 @@
 # TP 1
 
-## run le docker:
+## run docker:
 
 ```bash
 dc -f docker-compose-py.yml up -d
@@ -64,10 +64,21 @@ python ./python/send_receive.py
 
 # TP 2
 
-## run le docker:
+## run docker:
 
 ```bash
 cd symfony
-dc up -d
-php bin/console server:start
+dc up --build -d
 ```
+
+```bash
+docker exec -it broker_php php bin/console messenger:consume 
+```
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"task": "Faire les courses"}' http://localhost:8000/tasks 
+```
+
+## web accès:
+
+rabbitmq: http://localhost:15672
