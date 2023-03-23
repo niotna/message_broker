@@ -76,7 +76,7 @@ docker exec -it broker_php php bin/console messenger:consume
 ```
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"task": "Faire les courses"}' http://localhost:8000/tasks 
+curl -X POST -H "Content-Type: application/json" -d '{"task": "Faire les courses"}' http://localhost:8080/tasks 
 ```
 
 ## web accès:
