@@ -25,7 +25,6 @@ symfony/phpunit.xml
 ###< symfony/phpunit-bridge ###
 
 symfony/docker/
-symfony/bin/
 symfony/.idea/
 
 symfony/rabbitmq_data/
@@ -53,7 +52,6 @@ symfony2/phpunit.xml
 ###< symfony/phpunit-bridge ###
 
 symfony2/docker/
-symfony2/bin/
 symfony2/.idea/
 
 symfony2/rabbitmq_data/
